@@ -1,4 +1,5 @@
 @import url("https://api.fontshare.com/v2/css?f[]=general-sans@300,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 :root {
   --background: #000000;
@@ -18,11 +19,29 @@ body {
   background: var(--background);
   color: var(--text-color);
 }
+
+.loader::before {
+  content: "/";
+  color: #fff;
+  font-size: 3em;
+  padding: 35px;
+  animation: animate 1.3s steps(4) infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 @keyframes animate {
-  from {
-    opacity: 0;
+  0% {
+    content: "/";
   }
-  to {
-    opacity: 1;
+  25% {
+    content: "-";
+  }
+  50% {
+    content: "\\";
+  }
+  75% {
+    content: "|";
   }
 }
