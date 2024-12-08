@@ -26,7 +26,7 @@
   width: 100%;
   padding: 9px 20px;
   background: none;
-  font-size: 14px;
+  font-size: 15px;
   border: none;
   outline: none;
   border-bottom: 1px solid #3a3a3a;
@@ -61,6 +61,10 @@
   margin-top: 3px;
 }
 
+.buttons button:active {
+  scale: 0.8;
+}
+
 .error {
   margin-top: 15px;
   color: #dddddd;
@@ -83,9 +87,8 @@
   margin-bottom: 35px;
 }
 .login a {
-  color: #0e0e0e;
   padding: 9px 15px;
-  font-size: 0.9em;
+  font-size: 1.1em;
   text-decoration: none;
-  background: #eeeeee;
+  color: grey;
 }
