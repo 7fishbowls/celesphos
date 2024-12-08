@@ -4,14 +4,10 @@ export async function POST(request) {
   try {
     const data = await request.json();
     const db = await ConnectToDb();
+    const collection = db.collection("users");
+    await collection.insertOne(data);
 
-    const user = await db
-      .collection("users")
-      .findOne({ username: data.username });
-
-    console.log(user);
-
-    return new Response(JSON.stringify({ available: user ? false : true }), {
+    return new Response(JSON.stringify({ successful: true }), {
       headers: {
         "Content-Type": "application/json",
       },
