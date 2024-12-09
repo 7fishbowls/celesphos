@@ -67,3 +67,18 @@ body {
     content: "|";
   }
 }
+.stars {
+  width: 100vw;
+  min-height: 100svh;
+  max-height: 100svh;
+  position: relative;
+  border-top: 1px solid #3a3a3a;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.star_ {
+  color: #fff;
+  padding: 30px;
+  display: grid;
+  place-items: center;
+}

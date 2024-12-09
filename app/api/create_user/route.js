@@ -16,7 +16,10 @@ export async function POST(request) {
       successful: true,
       unique_key: unique,
     };
-    await collection.insertOne(user_data);
+    await collection.insertOne({
+      ...user_data,
+      username: data.username.toLowerCase(),
+    });
 
     return new Response(JSON.stringify(constructing), {
       headers: {

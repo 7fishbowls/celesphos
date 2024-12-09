@@ -4,8 +4,11 @@ import Form from "@/components/Form";
 import styles from "@/styles/signup.module.css";
 import { useState } from "react";
 import signup_forms from "@/constants/forms";
+import { useRouter } from "next/navigation";
 
 function Signup() {
+  const router = useRouter();
+
   const [index, setIndex] = useState(0);
   const [allError, setAllError] = useState(false);
   const [formData, setFormData] = useState({
@@ -23,13 +26,16 @@ function Signup() {
         formData.username &&
         formData.password
       ) {
-        await fetch("/api/create_user", {
+        const request = await fetch("/api/create_user", {
           headers: {
             "Content-Type": "application/json",
           },
           method: "POST",
           body: JSON.stringify(formData),
         });
+        const data = await request.json();
+        localStorage.setItem("unique_key", data.unique_key);
+        router.push("/profile");
       } else {
         setAllError(true);
       }

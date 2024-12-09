@@ -7,7 +7,7 @@ export async function POST(request) {
 
     const user = await db
       .collection("users")
-      .findOne({ username: data.username });
+      .findOne({ username: data.username.toLowerCase() });
 
     return new Response(JSON.stringify({ available: user ? false : true }), {
       headers: {

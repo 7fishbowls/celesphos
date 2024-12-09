@@ -5,6 +5,7 @@ import Link from "next/link";
 import Counter from "@/components/Counter";
 import LoginForm from "@/components/LoginForm";
 import { loginForm } from "@/constants/forms";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [index, setIndex] = useState(0);
@@ -13,6 +14,7 @@ function Login() {
     username: "",
     password: "",
   });
+  const router = useRouter();
 
   const postData = async () => {
     try {
@@ -28,6 +30,8 @@ function Login() {
         setAllError(true);
       } else {
         setAllError(false);
+        localStorage.setItem("unique_key", data.unique_key);
+        router.push("/profile");
       }
     } catch (error) {
       console.error("Error while logging in:", error);
