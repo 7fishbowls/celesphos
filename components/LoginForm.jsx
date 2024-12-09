@@ -10,17 +10,28 @@ function LoginForm({
   title,
   place_holder,
   setIndex,
-  max,
   formData,
   setFormData,
-  handleFormSubmit,
+  max,
+  postForm,
 }) {
   const [error_, setError_] = useState(false);
   const [err_msg, setErrMsg] = useState(null);
   const inputRef = useRef(null);
 
   const handlePrev = () => {
-    setIndex((prev) => (prev > 0 ? prev - 1 : 0)); // Allow moving back without issues
+    setIndex((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
+  const handleInput = (e) => {
+    switch (index) {
+      case 0:
+        setFormData({ ...formData, username: e.target.value });
+        break;
+      case 1:
+        setFormData({ ...formData, password: e.target.value });
+        break;
+    }
   };
 
   const handleNext = () => {
@@ -38,17 +49,8 @@ function LoginForm({
       return setError_(true);
     }
     setError_(false);
-
-    switch (index) {
-      case 0:
-        setFormData({ ...formData, username: inputRef.current.value });
-        setIndex(1); // Move to password field
-        break;
-      case 1:
-        setFormData({ ...formData, password: inputRef.current.value });
-        handleFormSubmit(); // Submit form
-        break;
-    }
+    setIndex((prev) => (prev < max ? prev + 1 : max));
+    if (index === 1) postForm();
   };
 
   return (
@@ -65,7 +67,12 @@ function LoginForm({
             </span>
           )}
         </h2>
-        <input type="text" placeholder={place_holder} ref={inputRef} />
+        <input
+          type="text"
+          placeholder={place_holder}
+          ref={inputRef}
+          onChange={(e) => handleInput(e)}
+        />
         <div className={styles.buttons}>
           <button onClick={handlePrev}>
             <span>

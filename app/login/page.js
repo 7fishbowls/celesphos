@@ -13,7 +13,6 @@ function Login() {
     username: "",
     password: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const postData = async () => {
     try {
@@ -34,19 +33,7 @@ function Login() {
       }
     } catch (error) {
       console.error("Error while logging in:", error);
-    } finally {
-      setIsSubmitting(false); // Reset submission state
     }
-  };
-
-  useEffect(() => {
-    if (isSubmitting && formData.username && formData.password) {
-      postData();
-    }
-  }, [isSubmitting, formData]);
-
-  const handleFormSubmit = () => {
-    setIsSubmitting(true); // Trigger the submission process
   };
 
   return (
@@ -65,7 +52,7 @@ function Login() {
               formData={formData}
               setFormData={setFormData}
               allError={allError}
-              handleFormSubmit={handleFormSubmit}
+              postForm={postData}
             />
           );
         })}

@@ -15,6 +15,8 @@ function Signup() {
     password: "",
   });
 
+  console.log(formData);
+
   const postForm = async () => {
     try {
       if (
@@ -37,17 +39,6 @@ function Signup() {
       console.log(err);
     }
   };
-
-  useEffect(() => {
-    if (
-      formData.name &&
-      formData.email &&
-      formData.password &&
-      formData.username
-    ) {
-      postForm();
-    }
-  }, [formData.password]);
 
   return (
     <>

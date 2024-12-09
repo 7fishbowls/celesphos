@@ -19,6 +19,7 @@ function Form({
 }) {
   const everything =
     formData.name && formData.email && formData.username && formData.password;
+
   const inputRef = useRef(null);
   const [error_, setError] = useState(false);
   const [canGo, setCanGo] = useState(true);
@@ -31,6 +32,23 @@ function Form({
     });
     const final = await response.json();
     return final.available;
+  };
+
+  const handleInput = (e) => {
+    switch (index) {
+      case 0:
+        setFormData({ ...formData, name: inputRef.current.value });
+        break;
+      case 1:
+        setFormData({ ...formData, email: inputRef.current.value });
+        break;
+      case 2:
+        setFormData({ ...formData, username: inputRef.current.value });
+        break;
+      case 3:
+        setFormData({ ...formData, password: inputRef.current.value });
+        break;
+    }
   };
 
   const handleNext = async () => {
@@ -89,15 +107,7 @@ function Form({
             break;
         }
         setIndex((prev) => (prev < max ? prev + 1 : max));
-        if (
-          index === max &&
-          formData.name &&
-          formData.email &&
-          formData.username &&
-          formData.password
-        ) {
-          postForm();
-        }
+        if (index === 3) postForm();
       }
     }
   };
@@ -121,7 +131,12 @@ function Form({
               </span>
             )}
           </h2>
-          <input type="text" placeholder={place_holder} ref={inputRef} />
+          <input
+            type="text"
+            placeholder={place_holder}
+            ref={inputRef}
+            onChange={(e) => handleInput(e)}
+          />
           <div className={styles.buttons}>
             <button onClick={handlePrev}>
               <span>

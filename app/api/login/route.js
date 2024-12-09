@@ -10,13 +10,11 @@ export async function POST(request) {
       .collection("users")
       .findOne({ username: data.username });
 
-    console.log(data);
-
     if (!user) return new Response(JSON.stringify({ error: true }));
 
     const result = await bcrypt.compare(data.password, user.password);
     const constructing = {
-      error: result ? true : false,
+      error: !result,
       unique_key: user.unique,
     };
 
