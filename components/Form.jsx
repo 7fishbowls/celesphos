@@ -132,7 +132,7 @@ function Form({
             )}
           </h2>
           <input
-            type="text"
+            type={index === 3 ? "password" : "text"}
             placeholder={place_holder}
             ref={inputRef}
             onChange={(e) => handleInput(e)}

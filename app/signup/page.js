@@ -2,7 +2,7 @@
 import Counter from "@/components/Counter";
 import Form from "@/components/Form";
 import styles from "@/styles/signup.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import signup_forms from "@/constants/forms";
 
 function Signup() {
@@ -14,8 +14,6 @@ function Signup() {
     username: "",
     password: "",
   });
-
-  console.log(formData);
 
   const postForm = async () => {
     try {

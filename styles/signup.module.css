@@ -52,13 +52,9 @@
   place-items: center;
   font-size: 0.95em;
   border: 1px solid #fff;
+  padding-top: 4px;
   transition: 200ms ease-in-out;
   cursor: pointer;
-}
-
-.buttons button span {
-  transition: 2.3s cubic-bezier(0.04, 0.12, 0, 0.99);
-  margin-top: 3px;
 }
 
 .buttons button:active {
@@ -84,12 +80,11 @@
   bottom: 30px;
   right: 3px;
   margin-right: 35px;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 .login a {
-  font-size: 1.1em;
-  text-decoration: none;
-  color: grey;
+  font-size: 1em;
+  color: #dddddd;
 }
 .special {
   background: yellowgreen;

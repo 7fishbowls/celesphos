@@ -68,7 +68,7 @@ function LoginForm({
           )}
         </h2>
         <input
-          type="text"
+          type={index === 1 ? "password" : "text"}
           placeholder={place_holder}
           ref={inputRef}
           onChange={(e) => handleInput(e)}

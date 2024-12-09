@@ -24,12 +24,10 @@ function Login() {
         body: JSON.stringify(formData),
       });
       const data = await request.json();
-      console.log(data);
       if (data.error) {
         setAllError(true);
       } else {
         setAllError(false);
-        console.log("Login successful!");
       }
     } catch (error) {
       console.error("Error while logging in:", error);

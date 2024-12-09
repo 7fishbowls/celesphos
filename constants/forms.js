@@ -21,7 +21,7 @@ export default signup_forms;
 export const loginForm = [
   {
     title: "What's your username?",
-    place_holder: "John Doe",
+    place_holder: "shaik786",
   },
   {
     title: "Lastly, the password.",
