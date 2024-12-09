@@ -91,3 +91,23 @@
   text-decoration: none;
   color: grey;
 }
+.special {
+  background: yellowgreen;
+}
+.animate_text {
+  animation: animate_text 1s steps(4) infinite;
+}
+@keyframes animate_text {
+  0% {
+    content: "/";
+  }
+  25% {
+    content: "-";
+  }
+  50% {
+    content: "\\";
+  }
+  75% {
+    content: "|";
+  }
+}

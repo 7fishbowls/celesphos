@@ -1,4 +1,5 @@
 import { ConnectToDb } from "@/lib/db";
+import bcrypt from "bcrypt";
 
 export async function POST(request) {
   try {
@@ -9,7 +10,17 @@ export async function POST(request) {
       .collection("users")
       .findOne({ username: data.username });
 
-    return new Response(JSON.stringify({ available: user ? false : true }), {
+    console.log(data);
+
+    if (!user) return new Response(JSON.stringify({ error: true }));
+
+    const result = await bcrypt.compare(data.password, user.password);
+    const constructing = {
+      error: result ? true : false,
+      unique_key: user.unique,
+    };
+
+    return new Response(JSON.stringify(constructing), {
       headers: {
         "Content-Type": "application/json",
       },

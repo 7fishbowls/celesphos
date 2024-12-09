@@ -2,8 +2,8 @@
 import Counter from "@/components/Counter";
 import Form from "@/components/Form";
 import styles from "@/styles/signup.module.css";
-import { use, useState } from "react";
-import forms from "@/constants/forms";
+import { useEffect, useState } from "react";
+import signup_forms from "@/constants/forms";
 
 function Signup() {
   const [index, setIndex] = useState(0);
@@ -16,29 +16,43 @@ function Signup() {
   });
 
   const postForm = async () => {
-    console.log(formData);
+    try {
+      if (
+        formData.name &&
+        formData.email &&
+        formData.username &&
+        formData.password
+      ) {
+        await fetch("/api/create_user", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          method: "POST",
+          body: JSON.stringify(formData),
+        });
+      } else {
+        setAllError(true);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
     if (
       formData.name &&
       formData.email &&
-      formData.username &&
-      formData.password
+      formData.password &&
+      formData.username
     ) {
-      const send = await fetch("/api/create_user", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-        body: JSON.stringify(formData),
-      });
-    } else {
-      setAllError(true);
+      postForm();
     }
-  };
+  }, [formData.password]);
 
   return (
     <>
       <section className={styles.signup}>
-        {forms.map((elem, id) => {
+        {signup_forms.map((elem, id) => {
           return (
             <Form
               styles={styles}
@@ -47,7 +61,7 @@ function Signup() {
               title={elem.title}
               place_holder={elem.place_holder}
               key={id}
-              max={forms.length - 1}
+              max={signup_forms.length - 1}
               setFormData={setFormData}
               formData={formData}
               postForm={postForm}

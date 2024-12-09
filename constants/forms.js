@@ -1,4 +1,4 @@
-const forms = [
+const signup_forms = [
   {
     title: "What's your name?",
     place_holder: "John Doe",
@@ -16,4 +16,15 @@ const forms = [
     place_holder: "It's secret",
   },
 ];
-export default forms;
+export default signup_forms;
+
+export const loginForm = [
+  {
+    title: "What's your username?",
+    place_holder: "John Doe",
+  },
+  {
+    title: "Lastly, the password.",
+    place_holder: "It's secret",
+  },
+];

@@ -16,6 +16,8 @@
   position: absolute;
   right: 0;
   top: 0;
+  z-index: 100000000000;
+
   padding: 35px;
   font-size: 1.3em;
 }

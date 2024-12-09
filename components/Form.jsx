@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
@@ -16,6 +17,8 @@ function Form({
   postForm,
   allError,
 }) {
+  const everything =
+    formData.name && formData.email && formData.username && formData.password;
   const inputRef = useRef(null);
   const [error_, setError] = useState(false);
   const [canGo, setCanGo] = useState(true);
@@ -80,11 +83,19 @@ function Form({
             setFormData({ ...formData, username: inputRef.current.value });
             break;
           case 3:
-            setFormData({ ...formData, password: inputRef.current.value });
+            setFormData((prev) => {
+              return { ...prev, password: inputRef.current.value };
+            });
             break;
         }
         setIndex((prev) => (prev < max ? prev + 1 : max));
-        if (index === max) {
+        if (
+          index === max &&
+          formData.name &&
+          formData.email &&
+          formData.username &&
+          formData.password
+        ) {
           postForm();
         }
       }
@@ -117,7 +128,10 @@ function Form({
                 <BsArrowLeft />
               </span>
             </button>
-            <button onClick={handleNext}>
+            <button
+              onClick={handleNext}
+              className={`${everything ? styles.special : ""}`}
+            >
               <span>
                 <BsArrowRight />
               </span>
