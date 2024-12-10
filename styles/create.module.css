@@ -1,0 +1,86 @@
+.create_researhes {
+  display: flex;
+  flex-direction: row;
+  max-width: 100vw;
+  opacity: 0;
+  transition: 1.2s;
+  transition-delay: 2s;
+  overflow-x: hidden;
+}
+.create {
+  min-height: 100svh;
+  min-width: 100vw;
+  display: grid;
+  place-items: center;
+  transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.active {
+  opacity: 1;
+}
+.create .create_ {
+  padding: 10px;
+  width: calc(100vw - 50px);
+  max-width: 500px;
+}
+.create .create_ header {
+  font-size: 0.93em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.create .create_ input {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  background: none;
+  padding: 8px 15px;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  outline: none;
+  color: hsl(0, 0%, 93%);
+  font-size: 15px;
+}
+.create .create_ input:focus {
+  border-bottom: 1px solid #ddd;
+}
+.create .create_ .buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.create .create_ .buttons button {
+  width: 40px;
+  background: #dddddd;
+  transition: 0.4s;
+  border: none;
+  font-size: 1em;
+  height: 40px;
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+}
+.create .create_ .buttons button:active {
+  scale: 0.7;
+}
+.error {
+  margin-bottom: 30px;
+  margin-top: 10px;
+  color: #ababab;
+  line-height: 1.6;
+  font-size: 15px;
+}
+.create_ textarea {
+  width: 100%;
+  background: none;
+  border: 1px solid #3a3a3a;
+  padding: 15px;
+  height: 200px;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  outline: none;
+  color: hsl(0, 0%, 93%);
+  font-size: 15px;
+  resize: none;
+}
+.create_ textarea::placeholder {
+  color: #292929;
+}
