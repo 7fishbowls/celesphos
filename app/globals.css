@@ -81,7 +81,7 @@ body {
 .loader_ h2 {
   font-size: 19px;
   margin: 40px;
-  color: #eeeeee;
+  color: #3a3a3a;
   font-weight: 100;
 }
 
@@ -110,9 +110,15 @@ body {
 @keyframes animate_each_letter {
   0% {
     opacity: 0;
+    color: #3a3a3a;
+  }
+  50% {
+    opacity: 1;
+    color: #eee;
   }
   100% {
-    opacity: 1;
+    opacity: 0.5;
+    color: #a6a6a6;
   }
 }
 .tt {

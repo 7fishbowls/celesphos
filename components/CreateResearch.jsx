@@ -14,6 +14,7 @@ function CreateResearch({
   setFormData,
   place_holder,
   formData,
+  isLoading,
 }) {
   const [error, setError] = useState(false);
   const isPressed = useRef(false);
@@ -112,7 +113,8 @@ function CreateResearch({
             )}
             {!btn_visible && <p> </p>}
             <button onClick={handleNext}>
-              <BsArrowRight />
+              {isLoading && <span className={styles.loader}></span>}
+              {!isLoading && <BsArrowRight />}
             </button>
           </div>
         </section>

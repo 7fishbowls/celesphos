@@ -10,6 +10,7 @@ import KeywordSearch from "@/components/KeywordSearch";
 function Create() {
   const [hide, setHide] = useState(false);
   const [index, setIndex] = useState(0);
+  const [isLoading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     research_title: "",
     research_keyword: "",
@@ -17,8 +18,20 @@ function Create() {
     research_author: "",
   });
 
-  const postForm = () => {
-    console.log(formData);
+  const postForm = async () => {
+    setLoading(true);
+    try {
+      const request = await fetch("/api/create_research", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      setLoading(false);
+    } catch (error) {
+      console.error("Error while logging in:", error);
+    }
   };
 
   return (
@@ -32,7 +45,7 @@ function Create() {
           title="Pick up a title for research."
           index={index}
           setIndex={setIndex}
-          place_holder={"Eg,. Mysteries Of Black Hole"}
+          place_holder={"Eg,. Mysteries of Black Hole"}
           btn_visible={false}
           formData={formData}
           setFormData={setFormData}
@@ -68,6 +81,8 @@ function Create() {
           formData={formData}
           postForm={postForm}
           setFormData={setFormData}
+          setLoading={setLoading}
+          isLoading={isLoading}
         />
       </section>
       <Loaderv2 hide={hide} setHide={setHide} />
