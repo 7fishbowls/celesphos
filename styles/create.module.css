@@ -10,6 +10,7 @@
 .create {
   min-height: 100svh;
   min-width: 100vw;
+  z-index: 1;
   display: grid;
   place-items: center;
   transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
@@ -17,7 +18,8 @@
 .active {
   opacity: 1;
 }
-.create .create_ {
+.create .create_,
+.keyword section {
   padding: 10px;
   width: calc(100vw - 50px);
   max-width: 500px;
@@ -28,26 +30,28 @@
   align-items: center;
   justify-content: space-between;
 }
-.create .create_ input {
+.create .create_ input,
+.keyword input {
   border: none;
   border-bottom: 1px solid #3a3a3a;
   background: none;
-  padding: 8px 15px;
+  padding: 15px 15px;
   width: 100%;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 10px;
   outline: none;
   color: hsl(0, 0%, 93%);
   font-size: 15px;
 }
-.create .create_ input:focus {
+.create .create_ input:focus,
+.keyword input:focus {
   border-bottom: 1px solid #ddd;
 }
 .create .create_ .buttons {
   display: flex;
   justify-content: space-between;
 }
-.create .create_ .buttons button {
+.buttons button {
   width: 40px;
   background: #dddddd;
   transition: 0.4s;
@@ -72,15 +76,60 @@
   width: 100%;
   background: none;
   border: 1px solid #3a3a3a;
-  padding: 15px;
-  height: 200px;
+  padding: 25px;
+  padding-top: 20px;
+  height: 250px;
   margin-top: 20px;
   margin-bottom: 25px;
   outline: none;
-  color: hsl(0, 0%, 93%);
+  color: hsl(0, 0%, 80%);
   font-size: 15px;
   resize: none;
+  line-height: 1.8;
+}
+.create_ textarea:focus {
+  border: 1px solid #848484;
 }
 .create_ textarea::placeholder {
   color: #292929;
+}
+@media screen and (min-width: 768px) {
+  .create_ textarea {
+    font-size: 16px;
+  }
+}
+.keyword {
+  min-height: 100svh;
+  color: #ddd;
+  transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
+  min-width: 100vw;
+  display: grid;
+  place-items: center;
+  transform: translate(-100vw);
+}
+.keyword header {
+  font-size: 0.93em;
+}
+.keyword section {
+  padding-top: 0;
+}
+.keyword .elements {
+  max-height: 30vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.keyword .elements p {
+  margin-bottom: 20px;
+  width: calc(100% - 20px);
+  padding: 10px;
+}
+.keyword .elements p:hover {
+  background: #3a3a3a;
+  cursor: pointer;
+}
+.keyword .buttons {
+  margin-top: 20px;
+}
+.selected_keyword {
+  background: #3a3a3a;
 }

@@ -28,7 +28,7 @@ function Loaderv2({ hide, setHide }) {
             <span
               key={index}
               style={{
-                animation: "animate_each_letter 3s ease-in-out forwards",
+                animation: "animate_each_letter 5s ease-in-out forwards",
                 animationDelay: `${index * 0.1}s`,
                 opacity: 0,
               }}

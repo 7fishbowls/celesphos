@@ -61,24 +61,26 @@ function Form({
       }, 1000);
 
       if (!inputRef.current.value) {
-        setErrorMsg("The feild can't be empty.");
+        setErrorMsg("Whoa, can’t leave this blank like a black hole.");
         return setError(true);
       } else if (index === 2 && inputRef.current.value.length < 3) {
         setError(true);
         return setErrorMsg("Username can't be that short!");
       } else if (index === 2 && inputRef.current.value.trim().includes(" ")) {
         setError(true);
-        return setErrorMsg("Username cannot contain any spaces!");
+        return setErrorMsg("No spaces allowed, keep it tight and clean.");
       } else if (index === 3 && inputRef.current.value.length < 8) {
         setError(true);
-        return setErrorMsg("Make sure your password is 8 characters long.");
+        return setErrorMsg(
+          "Password's too short, make it atleast 8 characters."
+        );
       } else if (
         index === 1 &&
         (inputRef.current.value.trim().includes(" ") ||
           !inputRef.current.value.includes("@gmail.com"))
       ) {
         setError(true);
-        setErrorMsg("Invalid email, please double check!");
+        setErrorMsg("Invalid one, try again with a valid one!");
       } else {
         if (error_) setError(false);
         let isTaken;
@@ -87,7 +89,7 @@ function Form({
         if (index === 2 && !isTaken) {
           setError(true);
           return setErrorMsg(
-            `"${inputRef.current.value}" already taken, try again!`
+            `"${inputRef.current.value}" already taken, time to get creative.`
           );
         }
         switch (index) {
