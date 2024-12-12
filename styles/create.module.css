@@ -79,7 +79,7 @@
   padding: 25px;
   padding-top: 20px;
   height: 250px;
-  margin-top: 20px;
+  margin-top: 25px;
   margin-bottom: 25px;
   outline: none;
   color: hsl(0, 0%, 80%);
@@ -123,7 +123,7 @@
   width: calc(100% - 20px);
   padding: 10px;
 }
-.keyword .elements p:hover {
+.keyword .elements p:not(.selected_keyword):hover {
   background: #3a3a3a;
   cursor: pointer;
 }
@@ -131,8 +131,11 @@
   margin-top: 20px;
 }
 .selected_keyword {
-  background: #3a3a3a;
+  background: #ddd;
+  color: #0e0e0e;
+  cursor: help;
 }
+
 .loader {
   position: relative;
 }
