@@ -13,12 +13,17 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font);
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
   user-select: none;
 }
 
 body {
   background: var(--background);
   color: var(--text-color);
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 .loader {
@@ -114,11 +119,11 @@ body {
   }
   50% {
     opacity: 1;
-    color: #eee;
+    color: #fff;
   }
   100% {
     opacity: 0.5;
-    color: #a6a6a6;
+    color: #000;
   }
 }
 .tt {

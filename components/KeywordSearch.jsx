@@ -327,8 +327,7 @@ function KeywordSearch({ styles, index, setFormData, formData, setIndex }) {
   const [keywords, setKeywords] = useState(space_keywords);
 
   const handleKeyword = (elem) => {
-    if (elem !== "None.") setFormData({ ...formData, research_keyword: elem });
-    else setFormData({ ...formData, research_keyword: "none" });
+    setFormData({ ...formData, research_keyword: elem });
     setIndex((prev) => prev + 1);
   };
 
@@ -336,7 +335,7 @@ function KeywordSearch({ styles, index, setFormData, formData, setIndex }) {
     const value = e.target.value.toLowerCase();
     const searched = space_keywords.filter((elem) => elem.includes(value));
     if (searched.length > 0) setKeywords(searched);
-    else setKeywords(["None."]);
+    else setKeywords([e.target.value.replace(/\s+/g, "")]);
   };
 
   return (
@@ -347,6 +346,16 @@ function KeywordSearch({ styles, index, setFormData, formData, setIndex }) {
       <section>
         <header>
           <h2>Pick up a keyword.</h2>
+          <p
+            style={{
+              fontSize: "12px",
+              color: "grey",
+              padding: "5px",
+              paddingLeft: 0,
+            }}
+          >
+            Keywords play a crucial role in your post's popularity.
+          </p>
         </header>
         <section className={styles.keyword_box}>
           <input

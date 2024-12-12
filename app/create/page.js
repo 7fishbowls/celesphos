@@ -6,6 +6,7 @@ import { useState } from "react";
 import CreateResearch from "@/components/CreateResearch";
 import Counter from "@/components/Counter";
 import KeywordSearch from "@/components/KeywordSearch";
+import ImageUpload from "@/components/ImageUpload";
 
 function Create() {
   const [hide, setHide] = useState(false);
@@ -69,6 +70,7 @@ function Create() {
           place_holder={"I discovered something hidden in the stars..."}
           setFormData={setFormData}
         />
+        <ImageUpload index={index} />
         <CreateResearch
           styles={styles}
           hide={hide}
