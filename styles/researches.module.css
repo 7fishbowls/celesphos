@@ -1,0 +1,28 @@
+.researches {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  max-height: 100svh;
+}
+
+.researches_ {
+  min-height: 100svh;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+}
+.research {
+  scroll-snap-align: center;
+  background: #fff;
+  min-height: 80svh;
+  color: #000;
+}
+@media screen and (max-width: 768px) {
+  .researches {
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+}

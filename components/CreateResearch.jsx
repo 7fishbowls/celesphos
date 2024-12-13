@@ -14,13 +14,16 @@ function CreateResearch({
   setFormData,
   place_holder,
   formData,
+  img_,
   isLoading,
 }) {
   const [error, setError] = useState(false);
   const isPressed = useRef(false);
   const inputRef = useRef(null);
+  const [stringLength, setLength] = useState(0);
 
   const handleInputData = (e) => {
+    setLength(e.target.value.trim().length);
     switch (index) {
       case 0:
         setFormData((prev) => ({
@@ -32,6 +35,12 @@ function CreateResearch({
       case 3:
         setFormData((prev) => ({
           ...prev,
+          research_img_link: inputRef.current.value,
+        }));
+        break;
+      case 4:
+        setFormData((prev) => ({
+          ...prev,
           research_author: inputRef.current.value,
         }));
         break;
@@ -39,7 +48,7 @@ function CreateResearch({
   };
 
   const handleNext = () => {
-    if (index === 3) postForm();
+    if (index === 4) postForm();
     if (isPressed.current) return;
     if (!inputRef.current.value) {
       switch (index) {
@@ -53,6 +62,8 @@ function CreateResearch({
           return setError(
             "Oops, no explanation? We need the full scoop, not a mystery!"
           );
+        case 3:
+          return setError("Nah, Image is important.");
       }
     } else if (inputRef.current.value.trim().length < 5 && index !== 2) {
       return setError("C'mon 5 character at least.");
@@ -60,6 +71,11 @@ function CreateResearch({
       return setError(
         "A perfect explanation explains more than 500 characters."
       );
+    } else if (
+      (!inputRef.current.value.trim().includes("https") && index === 3) ||
+      (!inputRef.current.value.trim().includes("https") && index === 3)
+    ) {
+      return setError("Whoa, that's not a valid image link.");
     } else {
       isPressed.current = true;
       setTimeout(() => {
@@ -71,7 +87,7 @@ function CreateResearch({
           ...formData,
           research_explanation: inputRef.current.value,
         });
-      setIndex((current) => (current < 3 ? current + 1 : 3));
+      setIndex((current) => (current < 4 ? current + 1 : 4));
     }
   };
   const handlePrev = () => {
@@ -86,6 +102,7 @@ function CreateResearch({
       <main className={styles.create_}>
         <header>
           <h2>{title}</h2>
+          {!input_visible && <p>{stringLength}/500</p>}
           {error && <RiErrorWarningFill color="red" size={19} />}
         </header>
         <section className={styles.main}>
@@ -104,12 +121,22 @@ function CreateResearch({
               placeholder="_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________"
             ></textarea>
           )}
+
           {error && <p className={styles.error}>{error}</p>}
           <div className={styles.buttons}>
             {btn_visible && (
               <button onClick={handlePrev}>
                 <BsArrowLeft />
               </button>
+            )}
+            {img_ && (
+              <a
+                href="https://imgbb.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Upload Images
+              </a>
             )}
             {!btn_visible && <p> </p>}
             <button onClick={handleNext}>

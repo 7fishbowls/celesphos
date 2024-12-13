@@ -50,6 +50,15 @@
 .create .create_ .buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.buttons a {
+  transform: translateY(10px);
+  color: #ddd;
+  text-decoration: none;
+}
+.buttons a:hover {
+  text-decoration: underline;
 }
 .buttons button {
   width: 40px;
@@ -163,8 +172,19 @@
 .image_upload {
   min-width: 100vw;
   min-height: 100svh;
-  background: red;
   display: grid;
   transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
   place-items: center;
+}
+.image_upload header {
+  font-size: 0.93em;
+}
+.image_upload label {
+  background: #fff;
+  cursor: pointer;
+  color: #0e0e0e;
+  font-size: 0.93em;
+  padding: 10px;
+  position: absolute;
+  margin-top: 10px;
 }

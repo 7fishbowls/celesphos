@@ -7,8 +7,10 @@ export async function POST(request) {
     const db = await ConnectToDb();
     const collection = db.collection("researches");
 
-    const unique_ = `${Date.now()}${data}`;
+    const unique_ = `${Date.now()}${data.research_img_link}`;
     const unique = await bcrypt.hash(unique_, 10);
+
+    console.log(data.research_img_link);
 
     const constructing = {
       successful: true,
@@ -23,7 +25,7 @@ export async function POST(request) {
       },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: "Internal Server Error" }), {
+    return new Response(JSON.stringify({ error: error }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
     });

@@ -13,12 +13,11 @@ function Loaderv2({ hide, setHide }) {
   const [randomQuote, setRandomQuote] = useState(null);
 
   useEffect(() => {
-    // Set the random quote only after the component has mounted (client-side)
     const selectedQuote = quotes[Math.floor(Math.random() * quotes.length)];
     setRandomQuote(selectedQuote);
   }, []);
 
-  if (!randomQuote) return null; // Return nothing until the randomQuote is set
+  if (!randomQuote) return null;
 
   return (
     <section className="loader_">

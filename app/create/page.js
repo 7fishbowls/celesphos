@@ -16,6 +16,7 @@ function Create() {
     research_title: "",
     research_keyword: "",
     research_explanation: "",
+    research_img_link: "",
     research_author: "",
   });
 
@@ -70,11 +71,23 @@ function Create() {
           place_holder={"I discovered something hidden in the stars..."}
           setFormData={setFormData}
         />
-        <ImageUpload index={index} />
         <CreateResearch
           styles={styles}
           hide={hide}
-          title="Who's the genius behind this?."
+          title="Give the research image link."
+          index={index}
+          setIndex={setIndex}
+          img_={true}
+          btn_visible={true}
+          input_visible={true}
+          place_holder={"Eg., https://example.jpg"}
+          formData={formData}
+          setFormData={setFormData}
+        />
+        <CreateResearch
+          styles={styles}
+          hide={hide}
+          title="Who's the genius behind this?"
           index={index}
           setIndex={setIndex}
           btn_visible={true}

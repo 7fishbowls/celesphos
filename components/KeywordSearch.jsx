@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 
 function KeywordSearch({ styles, index, setFormData, formData, setIndex }) {
@@ -325,10 +325,17 @@ function KeywordSearch({ styles, index, setFormData, formData, setIndex }) {
   const selected = formData.research_keyword;
 
   const [keywords, setKeywords] = useState(space_keywords);
+  const pressed = useRef(false);
 
   const handleKeyword = (elem) => {
-    setFormData({ ...formData, research_keyword: elem });
-    setIndex((prev) => prev + 1);
+    if (!pressed.current) {
+      pressed.current = true;
+      setTimeout(() => {
+        pressed.current = false;
+      }, 1000);
+      setFormData({ ...formData, research_keyword: elem });
+      setIndex((prev) => (prev < 3 ? prev + 1 : 3));
+    }
   };
 
   const handleSearch = (e) => {
