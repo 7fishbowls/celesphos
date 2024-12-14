@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { BsArrowLeft } from "react-icons/bs";
 import { RiErrorWarningFill } from "react-icons/ri";
@@ -17,6 +17,11 @@ function CreateResearch({
   img_,
   isLoading,
 }) {
+  useEffect(() => {
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Tab") e.preventDefault();
+    });
+  });
   const [error, setError] = useState(false);
   const isPressed = useRef(false);
   const inputRef = useRef(null);

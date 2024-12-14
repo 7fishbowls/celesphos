@@ -6,7 +6,7 @@ import { useState } from "react";
 import CreateResearch from "@/components/CreateResearch";
 import Counter from "@/components/Counter";
 import KeywordSearch from "@/components/KeywordSearch";
-import ImageUpload from "@/components/ImageUpload";
+import { useRouter } from "next/navigation";
 
 function Create() {
   const [hide, setHide] = useState(false);
@@ -20,6 +20,8 @@ function Create() {
     research_author: "",
   });
 
+  const router = useRouter();
+
   const postForm = async () => {
     setLoading(true);
     try {
@@ -31,6 +33,7 @@ function Create() {
         body: JSON.stringify(formData),
       });
       setLoading(false);
+      router.push("/researches");
     } catch (error) {
       console.error("Error while logging in:", error);
     }

@@ -31,3 +31,14 @@ export async function POST(request) {
     });
   }
 }
+
+export async function GET() {
+  const db = await ConnectToDb();
+  const researches = await db.collection("researches").find({}).toArray();
+  return new Response(JSON.stringify(researches), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+}
