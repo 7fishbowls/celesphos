@@ -1,5 +1,6 @@
 import styles from "@/styles/researches.module.css";
 import Image from "next/image";
+import Menu from "@/components/Menu";
 
 export default async function Researches() {
   const req = await fetch("http://localhost:3000/api/create_research");
@@ -26,6 +27,7 @@ export default async function Researches() {
               </div>
             </div>
           </section>
+          <Menu />
         </section>
       ))}
     </main>

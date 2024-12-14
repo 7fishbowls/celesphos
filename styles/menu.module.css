@@ -1,0 +1,75 @@
+nav.menu {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  padding: 15px;
+  z-index: 10000000000;
+  background: #000;
+  transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
+  border: 1px solid #4a4a4a;
+  border-bottom: none;
+  border-right: none;
+  overflow: hidden;
+  color: #c3c3c3;
+}
+
+nav.menu:hover {
+  height: 100svh;
+  width: 50vw;
+  border: none;
+  padding: 40px;
+}
+
+nav.menu .bar {
+  rotate: -40deg;
+  transition: 0.3s;
+}
+.menu:hover .bar {
+  rotate: 130deg;
+}
+.menu .main {
+  padding: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  nav.menu:hover {
+    width: 100vw;
+    display: grid;
+  }
+}
+.star {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  text-transform: lowercase;
+  font-size: 0.85em;
+}
+.star:nth-child(1) {
+  top: 10%;
+  right: 20%;
+}
+.star:nth-child(2) {
+  top: 20%;
+  left: 20%;
+}
+.star:nth-child(3) {
+  top: 40%;
+  left: 10%;
+}
+
+.star:nth-child(4) {
+  top: 60%;
+  left: 30%;
+}
+.star {
+  opacity: 0;
+  scale: 0.5;
+  transition: 0.7s;
+}
+.menu:hover .star {
+  opacity: 1;
+  scale: 1;
+  transition: 3s;
+}

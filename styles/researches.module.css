@@ -62,7 +62,6 @@
   line-height: 2;
   background: #000000e2;
   border-top: 1px solid #3a3a3a;
-  backdrop-filter: blur(20px);
   transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
   position: absolute;
   bottom: 0;
@@ -86,7 +85,7 @@
 .content header p {
   transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
   color: #a3a3a3;
-  font-size: 1em;
+  font-size: 1.1em;
   opacity: 0.4;
 }
 .content:hover header p {
