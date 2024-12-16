@@ -3,7 +3,7 @@ import Image from "next/image";
 import Menu from "@/components/Menu";
 
 export default async function Researches() {
-  const req = await fetch("/api/create_research");
+  const req = await fetch("https://tempo-o5b5.onrender.com/research");
   const baseUrl =
     process.env.NEXT_PUBLIC_API_URL || `https://${process.env.VERCEL_URL}`;
   const researches = await req.json();
