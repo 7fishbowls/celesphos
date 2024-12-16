@@ -9,15 +9,15 @@ export async function POST(request) {
 
     const unique_ = `${Date.now()}${data.research_img_link}`;
     const unique = await bcrypt.hash(unique_, 10);
-
-    console.log(data.research_img_link);
+    const date = new Date();
+    const finalData = { ...data, date };
 
     const constructing = {
       successful: true,
       unique_key: unique,
     };
     await collection.insertOne({
-      ...data,
+      ...finalData,
     });
     return new Response(JSON.stringify(constructing), {
       headers: {
@@ -34,7 +34,11 @@ export async function POST(request) {
 
 export async function GET() {
   const db = await ConnectToDb();
-  const researches = await db.collection("researches").find({}).toArray();
+  const researches = await db
+    .collection("researches")
+    .find({})
+    .limit(10)
+    .toArray();
   return new Response(JSON.stringify(researches), {
     status: 200,
     headers: {

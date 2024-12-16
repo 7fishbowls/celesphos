@@ -24,12 +24,15 @@ export default async function Researches() {
               </header>
               <div className={styles.explanation}>
                 <p>{elem.research_explanation}</p>
+                <div className={styles.date}>
+                  <p>01-05-2023</p>
+                </div>
               </div>
             </div>
           </section>
-          <Menu />
         </section>
       ))}
+      <Menu />
     </main>
   );
 }

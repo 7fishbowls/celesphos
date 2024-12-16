@@ -34,8 +34,8 @@ function Signup() {
           body: JSON.stringify(formData),
         });
         const data = await request.json();
-        localStorage.setItem("unique_key", data.unique_key);
-        router.push("/profile");
+        localStorage.setItem("unique_id", data.unique_key);
+        router.push("/researches");
       } else {
         setAllError(true);
       }

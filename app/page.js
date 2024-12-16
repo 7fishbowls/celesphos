@@ -9,7 +9,7 @@ export default function Home() {
         <header>
           <h2>SPACE</h2>
         </header>
-        <Link href={"/signup"}>
+        <Link href={"/researches"}>
           <BsArrowUpRight />
         </Link>
       </section>

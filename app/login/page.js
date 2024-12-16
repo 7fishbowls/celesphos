@@ -30,8 +30,8 @@ function Login() {
         setAllError(true);
       } else {
         setAllError(false);
-        localStorage.setItem("unique_key", data.unique_key);
-        router.push("/profile");
+        localStorage.setItem("unique_id", data.unique_key);
+        router.push("/researches");
       }
     } catch (error) {
       console.error("Error while logging in:", error);

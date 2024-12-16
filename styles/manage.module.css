@@ -87,8 +87,8 @@
 }
 .content header p {
   transition: 1.3s cubic-bezier(0.7, 0, 0.3, 1);
-  color: #006fff;
   font-size: 1.1em;
+  color: #006fff;
   opacity: 0.4;
 }
 .content:hover header p {
@@ -115,4 +115,24 @@
   padding-top: 10px;
   float: right;
   color: grey;
+}
+.no_error {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: grey;
+  line-height: 1.5;
+}
+.delete {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  background: #000;
+  color: #eee;
+  cursor: pointer;
+  border: 1px solid #3a3a3a;
 }
