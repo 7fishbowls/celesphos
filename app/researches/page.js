@@ -3,7 +3,7 @@ import Image from "next/image";
 import Menu from "@/components/Menu";
 
 export default async function Researches() {
-  const req = await fetch("http://localhost:3000/api/create_research");
+  const req = await fetch("/api/create_research");
   const researches = await req.json();
   return (
     <main className={styles.researches}>
