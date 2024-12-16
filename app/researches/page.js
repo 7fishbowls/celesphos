@@ -4,6 +4,8 @@ import Menu from "@/components/Menu";
 
 export default async function Researches() {
   const req = await fetch("/api/create_research");
+  const baseUrl =
+    process.env.NEXT_PUBLIC_API_URL || `https://${process.env.VERCEL_URL}`;
   const researches = await req.json();
   return (
     <main className={styles.researches}>
